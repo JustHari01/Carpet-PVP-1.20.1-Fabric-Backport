@@ -1,6 +1,8 @@
 # Carpet PVP — Fabric 1.20.1 backport
 
-An unofficial backport of the fake-player PvP fixes from [Carpet PVP](https://modrinth.com/mod/carpet-pvp) to Fabric 1.20.1. This build is based on the MIT-licensed [Fabric Carpet 1.20 source](https://github.com/gnembon/fabric-carpet/tree/1.4.112) and keeps Carpet's existing commands, rules, and Scarpet features.
+An unofficial Fabric 1.20.1 backport of the fake-player PvP fixes in Carpet PVP 1.2.0, the release for Minecraft 1.21 and 1.21.1. It is based on the MIT-licensed [Fabric Carpet 1.20 source](https://github.com/gnembon/fabric-carpet/tree/1.4.112) and keeps Carpet's existing commands, rules, and Scarpet features.
+
+This targets the upstream 1.2.0 release for 1.21/1.21.1. It does not include the later 1.4.0 changes published for 1.21.5.
 
 ## Backported behavior
 
@@ -26,13 +28,13 @@ An unofficial backport of the fake-player PvP fixes from [Carpet PVP](https://mo
 
 This is an unofficial community backport. It is not affiliated with or endorsed by gnembon, TheobaldTheBird, or the Fabric Carpet maintainers. The project retains the upstream MIT license and attribution; see [LICENSE](LICENSE) and [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
 
-Upstream PvP fixes: [TheobaldTheBird/CarpetPVP](https://github.com/TheobaldTheBird/CarpetPVP). Base project: [gnembon/fabric-carpet](https://github.com/gnembon/fabric-carpet).
+Upstream PvP fixes: [TheobaldTheBird/CarpetPVP 1.2.0 source](https://github.com/TheobaldTheBird/CarpetPVP/tree/1.21). Base project: [gnembon/fabric-carpet](https://github.com/gnembon/fabric-carpet).
 Backport source and issue tracker: [JustHari01/Carpet-PVP-1.20.1-Fabric-Backport](https://github.com/JustHari01/Carpet-PVP-1.20.1-Fabric-Backport).
 
 ## Testing status
 
 The source compiled and remapped locally. No Minecraft client or dedicated server was launched, so in-game behavior and stability have not been verified.
 
-The later knockback patch in Carpet PVP 1.2 targets a 1.21-specific method that is not present in Minecraft 1.20.1. This backport retains the original fake-player shield knockback fix.
+The upstream 1.2.0 release also replaces `LivingEntity.getKnockback(...)`, which is absent in Minecraft 1.20.1. This backport does not reproduce that change; knockback-enchanted attacks during fire ticks remain unverified. The ported fake-player knockback fix is retained.
 
 AI disclosure: AI tools assisted with adapting the listed Carpet PVP behavior to the 1.20.1 source. The original Carpet and Carpet PVP authors are credited above.

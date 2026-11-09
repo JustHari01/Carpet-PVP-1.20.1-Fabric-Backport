@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Carpet PVP",
-  "description": "Unofficial 1.20.1 backport of Carpet PVP's fake-player combat fixes.",
+  "description": "Unofficial 1.20.1 backport of Carpet PVP 1.2.0's fake-player combat fixes.",
   "authors": [
     "gnembon",
     "TheobaldTheBird",
