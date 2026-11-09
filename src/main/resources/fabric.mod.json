@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "carpet",
+  "version": "${version}",
+
+  "name": "Carpet PVP",
+  "description": "Unofficial 1.20.1 backport of Carpet PVP's fake-player combat fixes.",
+  "authors": [
+    "gnembon",
+    "TheobaldTheBird",
+    "JustHari01"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/carpet-pvp",
+    "issues": "https://github.com/JustHari01/Carpet-PVP-1.20.1-Fabric-Backport/issues",
+    "sources": "https://github.com/JustHari01/Carpet-PVP-1.20.1-Fabric-Backport"
+  },
+
+  "license": "MIT",
+  "icon": "assets/carpet/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "carpet.CarpetServer::onGameStarted"
+    ],
+    "server": [
+      "carpet.CarpetServer::onGameStarted",
+      "carpet.utils.CarpetRulePrinter"
+    ]
+  },
+  "mixins": [
+    "carpet.mixins.json"
+  ],
+  "accessWidener" : "carpet.accesswidener",
+
+  "depends": {
+    "minecraft": "1.20.1",
+    "fabricloader": ">=0.14.18",
+    "java": ">=17"
+  }
+}
