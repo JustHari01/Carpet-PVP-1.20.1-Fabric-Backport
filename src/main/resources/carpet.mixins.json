@@ -53,6 +53,7 @@
     "MobMixin",
     "Villager_aiMixin",
     "Player_fakePlayersMixin",
+    "Player_attackKnockbackFixMixin",
     "Player_shieldStunMixin",
     "ServerGamePacketListenerImpl_coreMixin",
     "ServerGamePacketListenerImpl_tickMixin",

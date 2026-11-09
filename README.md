@@ -8,6 +8,7 @@ This targets the upstream 1.2.0 release for 1.21/1.21.1. It does not include the
 
 - Fake players use separate reach limits for blocks and entities.
 - Attack actions swing and reset the attack cooldown even when they miss.
+- Knockback-enchanted attacks do not add knockback when a hit is accepted during the target's hurt-resistance window.
 - Shield blocks by fake players use the expected shield sounds, stats, and damage trigger without the unwanted knockback behavior.
 - Fake players slow down while using items, including bows, shields, and consumables.
 - Fake players can sneak and sprint at the same time.
@@ -35,6 +36,6 @@ Backport source and issue tracker: [JustHari01/Carpet-PVP-1.20.1-Fabric-Backport
 
 The source compiled and remapped locally. No Minecraft client or dedicated server was launched, so in-game behavior and stability have not been verified.
 
-The upstream 1.2.0 release also replaces `LivingEntity.getKnockback(...)`, which is absent in Minecraft 1.20.1. This backport does not reproduce that change; knockback-enchanted attacks during fire ticks remain unverified. The ported fake-player knockback fix is retained.
+Minecraft 1.20.1 does not have the upstream `LivingEntity.getKnockback(...)` hook. The backport applies the same hurt-resistance check at the corresponding `Player.attack` knockback call after `hurt()` has processed the target. This skips only the extra attacker knockback for the primary target; Minecraft's damage knockback and the separate sweep-target path are left intact. The adaptation is compile-checked but has not yet been confirmed in a launched game.
 
 AI disclosure: AI tools assisted with adapting the listed Carpet PVP behavior to the 1.20.1 source. The original Carpet and Carpet PVP authors are credited above.
