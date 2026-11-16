@@ -34,8 +34,10 @@ Backport source and issue tracker: [JustHari01/Carpet-PVP-1.20.1-Fabric-Backport
 
 ## Testing status
 
-The source compiled and remapped locally. No Minecraft client or dedicated server was launched, so in-game behavior and stability have not been verified.
+On 2026-11-16, the exact uploaded JAR (SHA-256 `DEE8E3B94C1D5A10B0C1F6B704446B5D2811FC569F88FD8DC69C7E75795FE220`) was launched in an isolated Minecraft 1.20.1 dedicated server with Fabric Loader 0.16.14 and Java 21. Carpet PVP loaded, the server generated a fresh test world, and the server saved the Overworld, Nether, and End on clean shutdown. Two Carpet fake players spawned; a diamond-sword attack reduced the target's reported health from 20.0 to 16.166666.
 
-Minecraft 1.20.1 does not have the upstream `LivingEntity.getKnockback(...)` hook. The backport applies the same hurt-resistance check at the corresponding `Player.attack` knockback call after `hurt()` has processed the target. This skips only the extra attacker knockback for the primary target; Minecraft's damage knockback and the separate sweep-target path are left intact. The adaptation is compile-checked but has not yet been confirmed in a launched game.
+This verifies dedicated-server startup and one fake-player attack path. The isolated run did not verify client rendering, the exact knockback-suppression result, shield-stun timing, or every Carpet feature. A one-time `Can't keep up` warning occurred during the initial world-generation run.
+
+Minecraft 1.20.1 does not have the upstream `LivingEntity.getKnockback(...)` hook. The backport applies the same hurt-resistance check at the corresponding `Player.attack` knockback call after `hurt()` has processed the target. This skips only the extra attacker knockback for the primary target; Minecraft's damage knockback and the separate sweep-target path are left intact. The server test did not measure knockback displacement, so that specific adaptation remains unverified in-game.
 
 AI disclosure: AI tools assisted with adapting the listed Carpet PVP behavior to the 1.20.1 source. The original Carpet and Carpet PVP authors are credited above.
